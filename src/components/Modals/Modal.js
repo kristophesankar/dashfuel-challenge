@@ -47,7 +47,9 @@ export default function Modal({ isOpen, onClose, children }) {
       <button className="modal__close-button" onClick={handleClose}>
         &times;
       </button>
+      <div className="modal__content">
       {children}
+      </div>
     </dialog>
   );
 }

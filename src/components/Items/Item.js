@@ -82,12 +82,10 @@ export default function Item({
       >
         {isOver ? (
           <div className="item__button-container">
-            <button onClick={handleEditClick}>
-              <IconEdit />
+            <button className="item__button" onClick={handleEditClick}>
               Edit
             </button>
-            <button onClick={handleDeleteClick}>
-              <IconDelete />
+            <button className="item__button" onClick={handleDeleteClick}>
               Delete
             </button>
           </div>

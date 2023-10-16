@@ -5,8 +5,26 @@
   font-style: normal;
 }
 
-html {
+html * {
   font-family: "ProximaNovaRegular";
+  font-size: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 600;
+  font-size: 1.8rem;
+}
+
+div {
+  font-size: 1rem;
+}
+
+textarea {
+  resize: none;
 }
 
 .App {
@@ -23,22 +41,16 @@ html {
   transition: opacity 300ms ease;
 }
 
-/* Modal Content Element */
+/* Modal  */
+
 .modal__content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   background-color: white;
-  padding: 1rem 1.5rem;
-  width: 24rem;
-  border-radius: 0.5rem;
 }
 
 /* Close Button Element */
 .modal__close-button {
   all: unset;
-  font-size: 24px;
+  font-size: 2.5rem;
   position: absolute;
   top: 0px;
   right: 10px;
@@ -58,6 +70,8 @@ dialog {
   border-radius: 10px;
   border: solid 1px #eee;
   box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.75);
+  width: 300px;
+  width: 350px;
 }
 
 dialog::backdrop {
@@ -65,31 +79,7 @@ dialog::backdrop {
   backdrop-filter: blur(3px);
 }
 
-.item__button-container {
-  text-align: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-.rct-item-content {
-  text-align: center;
-}
-
-.item__button {
-  all: unset;
-  border: solid 1px green;
-  margin: 2px;
-  height: 100%;
-  width: 100%;
-  cursor: pointer;
-  background: green;
-}
-
-.item {
-  padding: 10px;
-}
+/* Form */
 
 .form-container {
   display: flex;
@@ -101,30 +91,53 @@ dialog::backdrop {
   width: 100%;
 }
 
-.form-container h2 {
+.form-container__header {
+  width: 100%;
 }
 
-.form-container textarea[name="item-text"] {
+.form-container__input {
+  padding: 5px;
+  min-height: 14px;
+
+  box-sizing: border-box;
 }
 
-.form-container input[type="datetime-local"] {
+.form-container__error {
+  text-align: center;
+  width: 100%;
+  color: red;
 }
 
-.form-container__save-button {
+.save-item__button {
+  min-height: 14px;
+  padding: 5px 0px 5px 0px;
+  background: #00c55d;
+  font-size: 1rem;
+  color: #fff;
+  border-radius: 5px;
+  border: solid 1px #00c55d;
+  box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+.save-item__button:hover {
+  background: #276946;
+  transition: background-color 100ms linear;
+  border: solid 1px #276946;
+  cursor: pointer;
+}
+.save-item__button:focus {
+  background-color:276946;
+  border: solid 1px #276946;
+}
+
+.save-item__button:disabled {
+  background: darkgray;
+  border: solid 1px darkgray;
 }
 
 .add-item__button {
   all: unset;
-  background: red;
+  background: #00c55d;
   text-align: center;
   border-radius: 100%;
   display: inline-flex;
@@ -143,10 +156,43 @@ dialog::backdrop {
   bottom: 10px;
   box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.75);
   cursor: pointer;
-  transition: background-color 300ms linear;
+  transition: background-color 100ms linear;
 }
 
 .add-item__button:hover {
-  background: darkred;
-  transition: background-color 300ms linear;
+  background: #276946;
+  transition: background-color 100ms linear;
+}
+
+/* Item */
+
+.item {
+  padding: 10px;
+}
+
+.item__button {
+  background: #FF6700;
+  color: #fff;
+  border: solid 1px #FF6700;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 5px;
+}
+
+.item__button:hover {
+  background: #9e4001;
+  border: solid 1px #9e4001;
+  transition: background-color 100ms linear;
+}
+
+.item__button-container {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.rct-item-content {
+  text-align: center;
 }

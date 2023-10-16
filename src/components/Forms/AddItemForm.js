@@ -79,22 +79,26 @@ export default function AddItemForm({ title }) {
 
   return (
     <div className="form-container">
-      <h2>{title}</h2>
+      <div className="form-container__header"><h2>{title}</h2></div>
       <textarea
         name="item-text"
         onChange={handleItemTextChange}
         value={itemText}
         placeholder="Enter a title here..."
         aria-label="Title text-area"
+        rows="6"
+        className="form-container__input"
       />
       <GroupSelect groups={groups} onGroupChange={onGroupChange} />
       <input
+        className="form-container__input"
         type="datetime-local"
         name="start-datetime"
         onChange={handleItemStartChange}
         aria-label="Start Date and Time"
       />
       <input
+        className="form-container__input"
         type="datetime-local"
         name="end-datetime"
         onChange={handleItemEndChange}
@@ -110,12 +114,12 @@ export default function AddItemForm({ title }) {
             group: group,
           })
         }
-        className="modal__save-button"
+        className="save-item__button"
         aria-label="Save Item"
       >
         Save
       </button>
-      <div className="errors">{error ? "Please enter all fields!" : ""}</div>
+      <div className="form-container__error">{error ? "Please enter all fields!" : ""}</div>
     </div>
   );
 }

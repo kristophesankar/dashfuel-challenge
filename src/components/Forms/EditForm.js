@@ -13,7 +13,7 @@ import { setIsActive } from "../../redux/slices/activeItemSlice";
  */
 export default function EditForm({ title, item, handleUpdateParentKey }) {
   const dispatch = useDispatch();
-  const [itemText, setItemText] = useState('');
+  const [itemText, setItemText] = useState("");
 
   /**
    * Handles the change of the item text in the textarea.
@@ -44,8 +44,17 @@ export default function EditForm({ title, item, handleUpdateParentKey }) {
 
   return (
     <div className="form-container">
-      <h2>{title}</h2>
-      <textarea name="item-text" onChange={onItemTextChange} value={itemText}></textarea>
+      <div className="form-container__header">
+        <h2>{title}</h2>
+      </div>
+      <textarea
+        name="item-text"
+        onChange={onItemTextChange}
+        value={itemText}
+        aria-label="Title text-area"
+        rows="6"
+        className="form-container__input"
+      ></textarea>
       <button
         onClick={() =>
           onEditItem({
@@ -53,9 +62,10 @@ export default function EditForm({ title, item, handleUpdateParentKey }) {
             title: itemText,
           })
         }
-        className="modal__save-button"
+        className="save-item__button"
+        aria-label="Edit Item"
       >
-        Edit
+        Save
       </button>
     </div>
   );
