@@ -1,9 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
 
+/**
+ * A modal component for displaying content in a dialog.
+ *
+ * @param {object} props - The component's properties.
+ * @param {boolean} props.isOpen - Indicates whether the modal is open or closed.
+ * @param {function} props.onClose - A callback function to be called when the modal is closed.
+ * @param {ReactNode} props.children - The content to be displayed within the modal.
+ */
 export default function Modal({ isOpen, onClose, children }) {
   const modalReference = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState(isOpen);
 
+  /**
+   * Closes the modal dialog and invokes the provided `onClose` callback if available.
+   */
   const handleClose = () => {
     if (onClose) {
       onClose();
@@ -11,16 +22,16 @@ export default function Modal({ isOpen, onClose, children }) {
     setIsModalOpen(false);
   };
 
-  // multiple useEffects to separate logic
+  // Multiple useEffects to separate logic
 
   useEffect(() => {
-    // set the modal to the props when initialized
+    // Set the modal state based on the `isOpen` prop when initialized.
     setIsModalOpen(isOpen);
   }, [isOpen]);
 
   useEffect(() => {
-    // use HTMLDialogElement API to control visiblity
-    // cleaner this way instead of using conditional rendering
+    // Use the HTMLDialogElement API to control visibility of the modal dialog.
+    // This allows showing or closing the dialog without conditional rendering.
     const modalDialog = modalReference.current;
     if (modalDialog) {
       if (isModalOpen) {

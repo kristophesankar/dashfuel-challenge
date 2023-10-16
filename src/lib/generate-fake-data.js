@@ -2,6 +2,7 @@ import faker from "faker";
 import randomColor from "randomcolor";
 import moment from "moment";
 
+// Define keys for group and item properties.
 var keys = {
   groupIdKey: "id",
   groupTitleKey: "title",
@@ -15,7 +16,15 @@ var keys = {
   groupLabelKey: "title",
 };
 
-export default function(groupCount = 30, itemCount = 1000, daysInPast = 30) {
+/**
+ * Generates fake data for a timeline. Taken from the example to provide some data to show.
+ *
+ * @param {number} groupCount - The number of groups to generate.
+ * @param {number} itemCount - The number of items to generate.
+ * @param {number} daysInPast - The number of days in the past to consider.
+ * @returns {object} - An object containing generated data.
+ */
+export default function (groupCount = 30, itemCount = 1000, daysInPast = 30) {
   let randomSeed = Math.floor(Math.random() * 1000);
   let groups = [];
   for (let i = 0; i < groupCount; i++) {
@@ -23,7 +32,7 @@ export default function(groupCount = 30, itemCount = 1000, daysInPast = 30) {
       id: `${i + 1}`,
       title: faker.name.firstName(),
       rightTitle: faker.name.lastName(),
-      bgColor: randomColor({ luminosity: "light", seed: randomSeed + i })
+      bgColor: randomColor({ luminosity: "light", seed: randomSeed + i }),
     });
   }
 
@@ -43,15 +52,13 @@ export default function(groupCount = 30, itemCount = 1000, daysInPast = 30) {
       title: faker.hacker.phrase(),
       start: startValue,
       end: endValue,
-      // canMove: startValue > new Date().getTime(),
-      // canResize: 'both',
       className:
         moment(startDate).day() === 6 || moment(startDate).day() === 0
           ? "item-weekend"
           : "",
       itemProps: {
-        "data-tip": faker.hacker.phrase()
-      }
+        "data-tip": faker.hacker.phrase(),
+      },
     });
   }
 

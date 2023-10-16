@@ -1,15 +1,27 @@
 import React, { useState } from "react";
-import Modal from "./Modal/Modal";
-import ItemForm from "./ItemForm";
-import MaterialButton from "./MaterialButton";
+import Modal from "./Modal";
+import AddItemForm from "../Forms/AddItemForm";
+import MaterialButton from "../Buttons/MaterialButton";
 
+/**
+ * A component representing an "Add Item" modal.
+ *
+ * This component provides a button to open a modal dialog for adding an item.
+ * When the modal is open, it displays an "Add Item" form.
+ */
 export default function AddItemModal() {
   const [isOpen, setIsOpen] = useState(false);
 
+  /**
+   * Opens the modal dialog.
+   */
   const handleOpen = () => {
     setIsOpen(true);
   };
 
+  /**
+   * Closes the modal dialog.
+   */
   const handleClose = () => {
     setIsOpen(false);
   };
@@ -21,8 +33,9 @@ export default function AddItemModal() {
         classNames="add-item__button"
         handleOpen={handleOpen}
       />
+
       <Modal hasCloseBtn={true} isOpen={isOpen} onClose={handleClose}>
-        <ItemForm title="Add Item" type="edit" />
+        <AddItemForm title="Add Item" type="edit" />
       </Modal>
     </div>
   );

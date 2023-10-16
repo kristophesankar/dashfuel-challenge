@@ -1,5 +1,13 @@
 import * as React from "react";
 
+/**
+ * An icon component representing an "Edit" icon.
+ *
+ * @param {object} props - The component's properties.
+ * @param {string} props.className - Additional CSS classes for the icon.
+ * @param {string} props.style - Inline styles for the icon.
+ * @returns {JSX.Element} - The rendered "Edit" icon.
+ */
 export default function IconEdit(props) {
   return (
     <svg

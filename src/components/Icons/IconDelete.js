@@ -1,5 +1,13 @@
 import React from "react";
 
+/**
+ * An icon component representing a "Delete" icon.
+ *
+ * @param {object} props - The component's properties.
+ * @param {string} props.className - Additional CSS classes for the icon.
+ * @param {string} props.style - Inline styles for the icon.
+ * @returns {JSX.Element} - The rendered "Delete" icon.
+ */
 export default function IconDelete(props) {
   return (
     <svg
