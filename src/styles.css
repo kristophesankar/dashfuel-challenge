@@ -1,4 +1,152 @@
+@font-face {
+  font-family: "ProximaNovaRegular"; /* Provide a name for the font */
+  src: url("../assets/fonts/proxima_nova_regular.ttf") format("truetype"); /* Specify the path to your TTF font file */
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  font-family: "ProximaNovaRegular";
+}
+
 .App {
-  font-family: sans-serif;
+  font-family: "ProximaNovaRegular";
   text-align: center;
+}
+
+/* Modal Block */
+.modal {
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  transition: opacity 300ms ease;
+}
+
+/* Modal Content Element */
+.modal__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 1rem 1.5rem;
+  width: 24rem;
+  border-radius: 0.5rem;
+}
+
+/* Close Button Element */
+.modal__close-button {
+  all: unset;
+  font-size: 24px;
+  position: absolute;
+  top: 0px;
+  right: 10px;
+  cursor: pointer;
+  border-radius: 0.25rem;
+  color: darkgray;
+  margin-top: 10px;
+}
+
+/* Close Button Modifier (Hover) */
+.modal__close-button:hover {
+  color: black;
+}
+
+dialog {
+  z-index: 999;
+  border-radius: 10px;
+  border: solid 1px #eee;
+  box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+dialog::backdrop {
+  background-color: rgba(255, 30, 30, 0.1);
+  backdrop-filter: blur(3px);
+}
+
+.item__button-container {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.rct-item-content {
+  text-align: center;
+}
+
+.item__button {
+  all: unset;
+  border: solid 1px green;
+  margin: 2px;
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  background: green;
+}
+
+.item {
+  padding: 10px;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-container * {
+  width: 100%;
+}
+
+.form-container h2 {
+}
+
+.form-container textarea[name="item-text"] {
+}
+
+.form-container input[type="datetime-local"] {
+}
+
+.form-container__save-button {
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.add-item__button {
+  all: unset;
+  background: red;
+  text-align: center;
+  border-radius: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  height: 60px;
+  width: 60px;
+  position: fixed;
+  right: 20px;
+  z-index: 99999;
+  bottom: 10px;
+  box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.75);
+  cursor: pointer;
+  transition: background-color 300ms linear;
+}
+
+.add-item__button:hover {
+  background: darkred;
+  transition: background-color 300ms linear;
 }

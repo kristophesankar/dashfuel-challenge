@@ -2,6 +2,19 @@ import faker from "faker";
 import randomColor from "randomcolor";
 import moment from "moment";
 
+var keys = {
+  groupIdKey: "id",
+  groupTitleKey: "title",
+  groupRightTitleKey: "rightTitle",
+  itemIdKey: "id",
+  itemTitleKey: "title",
+  itemDivTitleKey: "title",
+  itemGroupKey: "group",
+  itemTimeStartKey: "start",
+  itemTimeEndKey: "end",
+  groupLabelKey: "title",
+};
+
 export default function(groupCount = 30, itemCount = 1000, daysInPast = 30) {
   let randomSeed = Math.floor(Math.random() * 1000);
   let groups = [];
@@ -44,5 +57,5 @@ export default function(groupCount = 30, itemCount = 1000, daysInPast = 30) {
 
   items = items.sort((a, b) => b - a);
 
-  return { groups, items };
+  return { keys, groups, items };
 }
