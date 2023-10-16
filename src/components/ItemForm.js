@@ -1,24 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import GroupSelect from "./GroupSelect";
 import { useSelector, useDispatch } from "react-redux";
 import { addItem } from "../redux/slices/timelineSlice";
 
-export default function ItemForm({  title, type }) {
-  const dispatch = useDispatch()
-  const {groups} = useSelector((state) => state.timeline)
+export default function ItemForm({ title, type }) {
+  const dispatch = useDispatch();
+  const { groups } = useSelector((state) => state.timeline);
   const [itemText, setItemText] = useState("");
   const [itemStart, setItemStart] = useState(0);
   const [itemEnd, setItemEnd] = useState(0);
-  const [group, setGroup] = useState("");
+  const [group, setGroup] = useState(0);
+  const [error, setError] = useState(true);
 
   /**
    * Handles the addition of a new item to the timeline.
    */
   const onAddItem = (item) => {
-    dispatch(addItem(item));
-  };
-
-  const onEditItem = (item) => {
     dispatch(addItem(item));
   };
 
@@ -40,6 +37,15 @@ export default function ItemForm({  title, type }) {
     setGroup(e.target.value);
   };
 
+  useEffect(() => {
+    // basic validation
+    if (itemText === "" || itemStart === 0 || itemEnd === 0 || group === 0) {
+      setError(true);
+    } else {
+      setError(false);
+    }
+  }, [itemText, itemEnd, itemStart, group]);
+
   return (
     <div className="form-container">
       <h2>{title}</h2>
@@ -56,6 +62,7 @@ export default function ItemForm({  title, type }) {
         onChange={onItemEndChange}
       />
       <button
+        disabled={error}
         onClick={() =>
           onAddItem({
             title: itemText,
@@ -68,6 +75,7 @@ export default function ItemForm({  title, type }) {
       >
         Save
       </button>
+      <div className="errors">{error ? "Please enter all fields!" : ""}</div>
     </div>
   );
 }

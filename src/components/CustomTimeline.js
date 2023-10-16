@@ -17,6 +17,7 @@ export default function CustomTimeline() {
   const [defaultTimeEnd, setDefaultTimeEnd] = useState(
     moment().startOf("day").add(1, "day").toDate()
   );
+  const [parentKey, setParentKey] = useState(0)
 
   const itemRenderer = ({
     item,
@@ -30,14 +31,19 @@ export default function CustomTimeline() {
         itemContext={itemContext}
         getItemProps={getItemProps}
         getResizeProps={getResizeProps}
+        setParentKey={setParentKey}
       />
     );
   };
 
+  const onUpdateParentKey = () => {
+    setParentKey(k => k+1)
+  }
+
   return (
-    <div>
+    <div key={parentKey}>
       <Modal hasCloseBtn={true} isOpen={isActive} onClose={() => dispatch(setIsActive(false)) }>
-        <EditForm title="Edit Item" item={itemObj} />
+        <EditForm title="Edit Item" item={itemObj} onUpdateParentKey={onUpdateParentKey}/>
       </Modal>
       <Timeline
         groups={groups}

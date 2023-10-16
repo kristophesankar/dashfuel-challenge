@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { editItem } from "../redux/slices/timelineSlice";
 import { setIsActive } from "../redux/slices/activeItemSlice";
 
-export default function EditForm({ title, item }) {
+export default function EditForm({ title, item, onUpdateParentKey }) {
   const dispatch = useDispatch()
   const [itemText, setItemText] = useState('');
 
@@ -18,6 +18,7 @@ export default function EditForm({ title, item }) {
   const onEditItem = (item) => {
     dispatch(editItem(item));
     dispatch(setIsActive(false))
+    onUpdateParentKey()
   };
 
   useEffect(() => {

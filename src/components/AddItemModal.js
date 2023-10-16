@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Modal from "./Modal/Modal";
 import ItemForm from "./ItemForm";
-import ModalButton from "./ModalButton";
+import MaterialButton from "./MaterialButton";
 
 export default function AddItemModal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +16,7 @@ export default function AddItemModal() {
 
   return (
     <div>
-      <ModalButton
+      <MaterialButton
         title="+"
         classNames="add-item__button"
         handleOpen={handleOpen}
